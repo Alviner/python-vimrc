@@ -25,8 +25,11 @@ call vundle#begin()
 
     "-------------------=== Code/Project navigation ===-------------
     Plugin 'scrooloose/nerdtree'                " Project and file navigation
+    Plugin 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
+    Plugin 'vim-ctrlspace/vim-ctrlspace'        " Tabs/Buffers/Fuzzy/Workspaces/Bookmarks
     Plugin 'majutsushi/tagbar'                  " Class/module browser
     Plugin 'kien/ctrlp.vim'                     " Fast transitions on project files
+    Plugin 'thaerkh/vim-indentguides'           " Visual representation of indents
 
     "-------------------=== Other ===-------------------------------
     Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
@@ -36,6 +39,9 @@ call vundle#begin()
     Plugin 'rosenfeld/conque-term'              " Consoles as buffers
     Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
     Plugin 'flazz/vim-colorschemes'             " Colorschemes
+    Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
+    Plugin 'ryanoasis/vim-devicons'             " Dev Icons
+    Plugin 'mhinz/vim-startify'                 " Vim Start Page
 
     "-------------------=== Snippets support ===--------------------
     Plugin 'garbas/vim-snipmate'                " Snippets manager
@@ -69,6 +75,7 @@ colorscheme wombat256mod                    " set color scheme
 set number                                  " show line numbers
 set ruler
 set ttyfast                                 " terminal acceleration
+set hidden                                  " hide buffers instead of closing them
 
 set tabstop=4                               " 4 whitespaces for tabs visual presentation
 set shiftwidth=4                            " shift lines by 4 spaces
@@ -104,8 +111,8 @@ inoremap jk <Esc>
 tab sball
 set switchbuf=useopen
 set laststatus=2
-nmap <F9> :bprev<CR>
-nmap <F10> :bnext<CR>
+nmap < :bprev<CR>
+nmap > :bnext<CR>
 nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
 
 "" Search settings
@@ -151,8 +158,8 @@ let g:riv_disable_folding=1
 "=====================================================
 
 " python executables for different plugins
-let g:pymode_python='python'
-let g:syntastic_python_python_exec='python'
+let g:pymode_python='python3'
+let g:syntastic_python_python_exec='python3'
 
 " rope
 let g:pymode_rope=0
@@ -214,7 +221,7 @@ let g:pymode_indent=1
 
 " code running
 let g:pymode_run=1
-let g:pymode_run_bind='<F5>'
+let g:pymode_run_bind='%'
 
 " syntastic
 let g:syntastic_always_populate_loc_list=1
@@ -227,7 +234,7 @@ let g:syntastic_error_symbol='X'
 let g:syntastic_style_error_symbol='X'
 let g:syntastic_warning_symbol='x'
 let g:syntastic_style_warning_symbol='x'
-let g:syntastic_python_checkers=['flake8', 'pydocstyle', 'python']
+let g:syntastic_python_checkers=['Pylint', 'Pylama', 'python']
 
 " YouCompleteMe
 set completeopt-=preview
