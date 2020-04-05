@@ -28,7 +28,6 @@ call vundle#begin()
     Plugin 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
     Plugin 'vim-ctrlspace/vim-ctrlspace'        " Tabs/Buffers/Fuzzy/Workspaces/Bookmarks
     Plugin 'majutsushi/tagbar'                  " Class/module browser
-    Plugin 'kien/ctrlp.vim'                     " Fast transitions on project files
     Plugin 'thaerkh/vim-indentguides'           " Visual representation of indents
 
     "-------------------=== Other ===-------------------------------
@@ -76,6 +75,7 @@ set number                                  " show line numbers
 set ruler
 set ttyfast                                 " terminal acceleration
 set hidden                                  " hide buffers instead of closing them
+set autochdir                               " automatically change the current directory
 
 set tabstop=4                               " 4 whitespaces for tabs visual presentation
 set shiftwidth=4                            " shift lines by 4 spaces
