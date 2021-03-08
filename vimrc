@@ -26,7 +26,8 @@ call vundle#begin()
     "-------------------=== Code/Project navigation ===-------------
     Plugin 'scrooloose/nerdtree'                " Project and file navigation
     Plugin 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
-    Plugin 'vim-ctrlspace/vim-ctrlspace'        " Tabs/Buffers/Fuzzy/Workspaces/Bookmarks
+    Plugin 'junegunn/fzf.vim'
+    Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plugin 'majutsushi/tagbar'                  " Class/module browser
     Plugin 'thaerkh/vim-indentguides'           " Visual representation of indents
 
@@ -48,10 +49,12 @@ call vundle#begin()
     Plugin 'tomtom/tlib_vim'                    " dependencies #2
     Plugin 'honza/vim-snippets'                 " snippets repo
 
+    Plugin 'kana/vim-textobj-user'
+    Plugin 'kana/vim-textobj-indent'
+
     "-------------------=== Languages support ===-------------------
     Plugin 'tpope/vim-commentary'               " Comment stuff out
     Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
-    Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
     Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
 
     "-------------------=== Python  ===-----------------------------
@@ -101,9 +104,6 @@ set clipboard=unnamed                       " use system clipboard
 set exrc                                    " enable usage of additional .vimrc files from working directory
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 
-" Additional mappings for Esc (useful for MacBook with touch bar)
-inoremap jj <Esc>
-inoremap jk <Esc>
 
 "=====================================================
 "" Tabs / Buffers settings
@@ -111,15 +111,22 @@ inoremap jk <Esc>
 tab sball
 set switchbuf=useopen
 set laststatus=2
-nmap < :bprev<CR>
-nmap > :bnext<CR>
 nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
 
 "" Search settings
 "=====================================================
-set incsearch	                            " incremental search
-set hlsearch	                            " highlight search results
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <Leader>f :Rg<CR>
+nnoremap <silent> <Leader>/ :BLines<CR>
+nnoremap <silent> <Leader>' :Marks<CR>
+nnoremap <silent> <Leader>g :Commits<CR>
+nnoremap <silent> <Leader>H :Helptags<CR>
+nnoremap <silent> <Leader>hh :History<CR>
+nnoremap <silent> <Leader>h: :History:<CR>
+nnoremap <silent> <Leader>h/ :History/<CR>
 
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 "=====================================================
 "" AirLine settings
 "=====================================================
