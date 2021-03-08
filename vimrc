@@ -40,6 +40,7 @@ call vundle#begin()
     Plugin 'flazz/vim-colorschemes'             " Colorschemes
     Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
     Plugin 'ryanoasis/vim-devicons'             " Dev Icons
+    Plugin 'xolox/vim-session'
     Plugin 'mhinz/vim-startify'                 " Vim Start Page
     Plugin 'cocopon/iceberg.vim'                " Colorscheme plugin
 
