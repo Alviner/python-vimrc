@@ -97,7 +97,6 @@ set clipboard=unnamed                       " use system clipboard
 set exrc                                    " enable usage of additional .vimrc files from working directory
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 
-vim-startify
 
 "=====================================================
 "" Tabs / Buffers settings
