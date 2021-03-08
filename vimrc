@@ -40,7 +40,6 @@ call vundle#begin()
     Plugin 'flazz/vim-colorschemes'             " Colorschemes
     Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
     Plugin 'ryanoasis/vim-devicons'             " Dev Icons
-    Plugin 'xolox/vim-session'
     Plugin 'mhinz/vim-startify'                 " Vim Start Page
     Plugin 'cocopon/iceberg.vim'                " Colorscheme plugin
 
@@ -172,7 +171,7 @@ let g:pymode_virtualenv=1
 
 " breakpoints
 let g:pymode_breakpoint=1
-let g:pymode_breakpoint_key='<leader>b'
+let g:pymode_breakpoint_key='C-B'
 
 " syntax highlight
 let g:pymode_syntax=1
