@@ -41,7 +41,7 @@ call vundle#begin()
     Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
     Plugin 'ryanoasis/vim-devicons'             " Dev Icons
     Plugin 'mhinz/vim-startify'                 " Vim Start Page
-    Plugin 'cocopon/iceberg.vim'                " Colorscheme plugin
+    Plugin 'dracula/vim', { 'name': 'dracula' } " Colorscheme plugin
 
     "------------------------=== Extra ===-------------------------
     Plugin 'kana/vim-textobj-user'
@@ -65,7 +65,7 @@ syntax enable                               " syntax highlight
 
 set t_Co=256                                " set 256 colors
 colorscheme iceberg                         " set color scheme
-set background=dark
+set background=dracula
 
 set number                                  " show line numbers
 set ruler
@@ -123,7 +123,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 "=====================================================
 "" AirLine settings
 "=====================================================
-let g:airline_theme='iceberg'
+let g:airline_theme='violet'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
@@ -171,7 +171,7 @@ let g:pymode_virtualenv=1
 
 " breakpoints
 let g:pymode_breakpoint=1
-let g:pymode_breakpoint_key='C-B'
+let g:pymode_breakpoint_bind='<C-B>'
 
 " syntax highlight
 let g:pymode_syntax=1
@@ -219,10 +219,6 @@ let g:syntastic_enable_signs=1
 let g:syntastic_check_on_wq=1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_loc_list_height=5
-let g:syntastic_error_symbol='X'
-let g:syntastic_style_error_symbol='X'
-let g:syntastic_warning_symbol='x'
-let g:syntastic_style_warning_symbol='x'
 let g:syntastic_python_checkers=['Pylama', 'python', 'mypy']
 
 " YouCompleteMe
@@ -232,4 +228,4 @@ let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 
 nmap <leader>g :YcmCompleter GoTo<CR>
-nmap <leader>d :YcmCompleter GoToDefinition<CR>
+nmap <leader>d :YcmCompleter GoToType<CR>
