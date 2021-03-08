@@ -41,7 +41,7 @@ call vundle#begin()
     Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
     Plugin 'ryanoasis/vim-devicons'             " Dev Icons
     Plugin 'mhinz/vim-startify'                 " Vim Start Page
-    Plugin 'pineapplegiant/spaceduck', { 'branch': 'main' } " Colorscheme plugin
+    Plugin 'cocopon/iceberg.vim'                " Colorscheme plugin
 
     "------------------------=== Extra ===-------------------------
     Plugin 'kana/vim-textobj-user'
@@ -71,7 +71,7 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-colorscheme spaceduck                  " set color scheme
+colorscheme iceberg                         " set color scheme
 set background=dark
 
 set number                                  " show line numbers
@@ -130,7 +130,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 "=====================================================
 "" AirLine settings
 "=====================================================
-let g:airline_theme='spaceduck'
+let g:airline_theme='iceberg'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
