@@ -146,16 +146,6 @@ autocmd VimEnter * if !argc() | NERDTree | endif  " Load NERDTree only if vim is
 nmap " :NERDTreeToggle<CR>
 
 "=====================================================
-"" SnipMate settings
-"=====================================================
-let g:snippets_dir='~/.vim/vim-snippets/snippets'
-
-"=====================================================
-"" Riv.vim settings
-"=====================================================
-let g:riv_disable_folding=1
-
-"=====================================================
 "" Python settings
 "=====================================================
 
