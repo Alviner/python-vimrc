@@ -41,7 +41,7 @@ call vundle#begin()
     Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
     Plugin 'ryanoasis/vim-devicons'             " Dev Icons
     Plugin 'mhinz/vim-startify'                 " Vim Start Page
-    Plugin 'dracula/vim', { 'name': 'dracula' } " Colorscheme plugin
+    Plugin 'sonph/onehalf', { 'rtp': 'vim' }    " Colorscheme plugin
 
     "------------------------=== Extra ===-------------------------
     Plugin 'kana/vim-textobj-user'
@@ -64,8 +64,8 @@ call vundle#end()                           " required
 syntax enable                               " syntax highlight
 
 set t_Co=256                                " set 256 colors
-colorscheme iceberg                         " set color scheme
-set background=dracula
+colorscheme onehalfdark                     " set color scheme
+set background=dark
 
 set number                                  " show line numbers
 set ruler
@@ -123,7 +123,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 "=====================================================
 "" AirLine settings
 "=====================================================
-let g:airline_theme='violet'
+let g:airline_theme='onehalfdark'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
