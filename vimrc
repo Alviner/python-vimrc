@@ -26,7 +26,7 @@ call vundle#begin()
     "-------------------=== Code/Project navigation ===-------------
     Plugin 'scrooloose/nerdtree'                " Project and file navigation
     Plugin 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
-    Plugin 'junegunn/fzf.vim'
+    Plugin 'junegunn/fzf.vim'                   " Fuzzy search
     Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plugin 'majutsushi/tagbar'                  " Class/module browser
     Plugin 'thaerkh/vim-indentguides'           " Visual representation of indents
@@ -36,20 +36,21 @@ call vundle#begin()
     Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
     Plugin 'Lokaltog/powerline'                 " Powerline fonts plugin
     Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
-    Plugin 'rosenfeld/conque-term'              " Consoles as buffers
     Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
     Plugin 'flazz/vim-colorschemes'             " Colorschemes
     Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
     Plugin 'ryanoasis/vim-devicons'             " Dev Icons
     Plugin 'mhinz/vim-startify'                 " Vim Start Page
+    Plugin 'cocopon/iceberg.vim'                " Colorscheme plugin
 
-    "-------------------=== Extra ===--------------------
+    "------------------------=== Extra ===-------------------------
     Plugin 'kana/vim-textobj-user'
     Plugin 'kana/vim-textobj-indent'
 
     "-------------------=== Languages support ===-------------------
     Plugin 'tpope/vim-commentary'               " Comment stuff out
     Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
+    Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
     Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
 
     "-------------------=== Python  ===-----------------------------
@@ -57,17 +58,14 @@ call vundle#begin()
     Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
 
 call vundle#end()                           " required
-filetype on
-filetype plugin on
-filetype plugin indent on
-
 "=====================================================
 "" General settings
 "=====================================================
 syntax enable                               " syntax highlight
 
 set t_Co=256                                " set 256 colors
-colorscheme wombat256mod                    " set color scheme
+colorscheme iceberg                         " set color scheme
+set background=dark
 
 set number                                  " show line numbers
 set ruler
@@ -99,6 +97,7 @@ set clipboard=unnamed                       " use system clipboard
 set exrc                                    " enable usage of additional .vimrc files from working directory
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 
+vim-startify
 
 "=====================================================
 "" Tabs / Buffers settings
@@ -120,12 +119,12 @@ nnoremap <silent> <Leader>H :Helptags<CR>
 nnoremap <silent> <Leader>hh :History<CR>
 nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR>
-
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+
 "=====================================================
 "" AirLine settings
 "=====================================================
-let g:airline_theme='badwolf'
+let g:airline_theme='iceberg'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
@@ -143,7 +142,7 @@ autocmd BufEnter *.py :call tagbar#autoopen(0)
 let NERDTreeIgnore=['\.pyc$', '\.pyo$', '__pycache__$']     " Ignore files in NERDTree
 let NERDTreeWinSize=40
 autocmd VimEnter * if !argc() | NERDTree | endif  " Load NERDTree only if vim is run without arguments
-nmap " :NERDTreeToggle<CR>
+nmap <leader>e :NERDTreeToggle<CR>
 
 "=====================================================
 "" Python settings
@@ -219,14 +218,14 @@ let g:pymode_run_bind='%'
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_enable_signs=1
-let g:syntastic_check_on_wq=0
+let g:syntastic_check_on_wq=1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_loc_list_height=5
 let g:syntastic_error_symbol='X'
 let g:syntastic_style_error_symbol='X'
 let g:syntastic_warning_symbol='x'
 let g:syntastic_style_warning_symbol='x'
-let g:syntastic_python_checkers=['Pylint', 'Pylama', 'python', 'mypy']
+let g:syntastic_python_checkers=['Pylama', 'python', 'mypy']
 
 " YouCompleteMe
 set completeopt-=preview
