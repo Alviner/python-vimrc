@@ -41,7 +41,7 @@ call vundle#begin()
     Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
     Plugin 'ryanoasis/vim-devicons'             " Dev Icons
     Plugin 'mhinz/vim-startify'                 " Vim Start Page
-    Plugin 'sonph/onehalf', { 'rtp': 'vim' }    " Colorscheme plugin
+    Plugin 'pineapplegiant/spaceduck', { 'branch': 'main' } " Colorscheme plugin
 
     "------------------------=== Extra ===-------------------------
     Plugin 'kana/vim-textobj-user'
@@ -64,7 +64,14 @@ call vundle#end()                           " required
 syntax enable                               " syntax highlight
 
 set t_Co=256                                " set 256 colors
-colorscheme onehalfdark                     " set color scheme
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+colorscheme spaceduck                  " set color scheme
 set background=dark
 
 set number                                  " show line numbers
@@ -123,7 +130,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 "=====================================================
 "" AirLine settings
 "=====================================================
-let g:airline_theme='onehalfdark'
+let g:airline_theme='spaceduck'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
