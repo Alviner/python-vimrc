@@ -41,7 +41,7 @@ call vundle#begin()
     Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
     Plugin 'ryanoasis/vim-devicons'             " Dev Icons
     Plugin 'mhinz/vim-startify'                 " Vim Start Page
-    Plugin 'kyoz/purify', { 'rtp': 'vim' }      " Colorscheme plugin
+    Plugin 'rakr/vim-two-firewatch'             " Colorscheme plugin
 
     "------------------------=== Extra ===-------------------------
     Plugin 'kana/vim-textobj-user'
@@ -65,9 +65,9 @@ syntax enable                               " syntax highlight
 
 set t_Co=256                                " set 256 colors
 
-colorscheme purify                          " set color scheme
+let g:two_firewatch_italics=1
+colorscheme two-firewatch                   " set color scheme
 set background=dark
-hi Normal guibg=#252834 ctermbg=234
 
 set number                                  " show line numbers
 set ruler
@@ -125,7 +125,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 "=====================================================
 "" AirLine settings
 "=====================================================
-let g:airline_theme='purify'
+let g:airline_theme='two-firewatch'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
@@ -142,7 +142,8 @@ nnoremap <silent> <Leader>t :TagbarToggle<CR>
 "=====================================================
 let NERDTreeIgnore=['\.pyc$', '\.pyo$', '__pycache__$']     " Ignore files in NERDTree
 let NERDTreeWinSize=40
-nmap <leader>e :NERDTreeToggle<CR>
+nmap <leader>z :NERDTreeToggle<CR>
+nmap <leader>a :NERDTreeFocus<CR>
 
 "=====================================================
 "" Python settings
