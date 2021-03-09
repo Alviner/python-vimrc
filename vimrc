@@ -41,7 +41,6 @@ call vundle#begin()
     Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
     Plugin 'ryanoasis/vim-devicons'             " Dev Icons
     Plugin 'mhinz/vim-startify'                 " Vim Start Page
-    Plugin 'rakr/vim-two-firewatch'             " Colorscheme plugin
 
     "------------------------=== Extra ===-------------------------
     Plugin 'kana/vim-textobj-user'
@@ -65,8 +64,7 @@ syntax enable                               " syntax highlight
 
 set t_Co=256                                " set 256 colors
 
-let g:two_firewatch_italics=1
-colorscheme two-firewatch                   " set color scheme
+colorscheme wombat256                       " set color scheme
 set background=dark
 
 set number                                  " show line numbers
@@ -125,7 +123,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 "=====================================================
 "" AirLine settings
 "=====================================================
-let g:airline_theme='two-firewatch'
+let g:airline_theme='base16'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
