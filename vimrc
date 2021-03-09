@@ -64,7 +64,7 @@ syntax enable                               " syntax highlight
 
 set t_Co=256                                " set 256 colors
 
-colorscheme wombat256                       " set color scheme
+colorscheme obsidian                        " set color scheme
 set background=dark
 
 set number                                  " show line numbers
@@ -123,7 +123,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 "=====================================================
 "" AirLine settings
 "=====================================================
-let g:airline_theme='base16'
+let g:airline_theme='jellybeans'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
