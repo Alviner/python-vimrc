@@ -41,7 +41,7 @@ call vundle#begin()
     Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
     Plugin 'ryanoasis/vim-devicons'             " Dev Icons
     Plugin 'mhinz/vim-startify'                 " Vim Start Page
-    Plugin 'cocopon/iceberg.vim'                " Colorscheme plugin
+    Plugin 'kyoz/purify', { 'rtp': 'vim' }      " Colorscheme plugin
 
     "------------------------=== Extra ===-------------------------
     Plugin 'kana/vim-textobj-user'
@@ -65,14 +65,9 @@ syntax enable                               " syntax highlight
 
 set t_Co=256                                " set 256 colors
 
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-
-colorscheme iceberg                         " set color scheme
+colorscheme purify                          " set color scheme
 set background=dark
+hi Normal guibg=#252834 ctermbg=234
 
 set number                                  " show line numbers
 set ruler
@@ -116,7 +111,7 @@ nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
 "" Search settings
 "=====================================================
 nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <C-F> :Files<CR>
+nnoremap <silent> <C-E> :Files<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 nnoremap <silent> <Leader>/ :BLines<CR>
 nnoremap <silent> <Leader>' :Marks<CR>
@@ -130,7 +125,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 "=====================================================
 "" AirLine settings
 "=====================================================
-let g:airline_theme='iceberg'
+let g:airline_theme='purify'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
@@ -140,7 +135,7 @@ let g:airline_powerline_fonts=1
 "=====================================================
 let g:tagbar_autofocus=0
 let g:tagbar_width=42
-autocmd BufEnter *.py :call tagbar#autoopen(0)
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 "=====================================================
 "" NERDTree settings
