@@ -9,7 +9,6 @@
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
 let $vimhome=fnamemodify(resolve(expand("~/.vimrc")), ':p:h')
-let $vundle=$vimhome."/bundle/Vundle.vim"
 
 " Be iMproved
 set nocompatible
@@ -18,45 +17,50 @@ set nocompatible
 "" Vundle settings
 "=====================================================
 filetype off
-set rtp+=$vundle
-call vundle#begin()
 
-    Plugin 'VundleVim/Vundle.vim'               " let Vundle manage Vundle, required
-
+call plug#begin('~/.vim/plugged')
     "-------------------=== Code/Project navigation ===-------------
-    Plugin 'scrooloose/nerdtree'                " Project and file navigation
-    Plugin 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
-    Plugin 'junegunn/fzf.vim'                   " Fuzzy search
-    Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plugin 'majutsushi/tagbar'                  " Class/module browser
-    Plugin 'thaerkh/vim-indentguides'           " Visual representation of indents
+    Plug 'scrooloose/nerdtree'                " Project and file navigation
+    Plug 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'                   " Fuzzy search
+    Plug 'majutsushi/tagbar'                  " Class/module browser
+    Plug 'thaerkh/vim-indentguides'           " Visual representation of indents
 
     "-------------------=== Other ===-------------------------------
-    Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
-    Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
-    Plugin 'Lokaltog/powerline'                 " Powerline fonts plugin
-    Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
-    Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
-    Plugin 'flazz/vim-colorschemes'             " Colorschemes
-    Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
-    Plugin 'ryanoasis/vim-devicons'             " Dev Icons
-    Plugin 'mhinz/vim-startify'                 " Vim Start Page
+    Plug 'bling/vim-airline'                  " Lean & mean status/tabline for vim
+    Plug 'vim-airline/vim-airline-themes'     " Themes for airline
+    Plug 'Lokaltog/powerline'                 " Powerline fonts plugin
+    Plug 'fisadev/FixedTaskList.vim'          " Pending tasks list
+    Plug 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
+    Plug 'flazz/vim-colorschemes'             " Colorschemes
+    Plug 'yuttie/comfortable-motion.vim'      " Smooth scrolling
+    Plug 'ryanoasis/vim-devicons'             " Dev Icons
+    Plug 'mhinz/vim-startify'                 " Vim Start Page
+    Plug 'mhinz/vim-signify'                  " show git diffs
+    Plug 'tpope/vim-obsession'                " Session manager
+    Plug "Raimondi/delimitMate"               " automatic closing of quotes, parenthesis, brackets and more
 
     "------------------------=== Extra ===-------------------------
-    Plugin 'kana/vim-textobj-user'
-    Plugin 'kana/vim-textobj-indent'
+    Plug 'kana/vim-textobj-user'
+    Plug 'kana/vim-textobj-indent'
 
     "-------------------=== Languages support ===-------------------
-    Plugin 'tpope/vim-commentary'               " Comment stuff out
-    Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
-    Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
-    Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
+    Plug 'tpope/vim-commentary'               " Comment stuff out
+    Plug 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
+    Plug 'Rykka/riv.vim'                      " ReStructuredText plugin
+    Plug 'Valloric/YouCompleteMe'             " Autocomplete plugin
+    Plug 'fatih/vim-go', { 'tag': '*' }
 
     "-------------------=== Python  ===-----------------------------
-    Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
-    Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
+    Plug 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
+    Plug 'scrooloose/syntastic'               " Syntax checking plugin for Vim
 
-call vundle#end()                           " required
+call plug#end()
+
+filetype on
+filetype plugin on
+filetype plugin indent on
 "=====================================================
 "" General settings
 "=====================================================
@@ -67,7 +71,7 @@ set t_Co=256                                " set 256 colors
 colorscheme obsidian                        " set color scheme
 set background=dark
 
-set number                                  " show line numbers
+set relativenumber                          " show line numbers
 set ruler
 set ttyfast                                 " terminal acceleration
 set hidden                                  " hide buffers instead of closing them
@@ -123,7 +127,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 "=====================================================
 "" AirLine settings
 "=====================================================
-let g:airline_theme='jellybeans'
+let g:airline_theme='onedark'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
@@ -146,10 +150,6 @@ nmap <leader>a :NERDTreeFocus<CR>
 "=====================================================
 "" Python settings
 "=====================================================
-
-" python executables for different plugins
-let g:pymode_python='python3'
-let g:syntastic_python_python_exec='python3'
 
 " rope
 let g:pymode_rope=0
@@ -230,3 +230,18 @@ let g:ycm_confirm_extra_conf=0
 
 nmap <leader>g :YcmCompleter GoTo<CR>
 nmap <leader>d :YcmCompleter GoToType<CR>
+
+" disable  arrows in normal mode
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+
+function! s:build_quickfix_list(lines)
+    call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+    copen
+    cc
+endfunction
+
+let g:fzf_action = {'ctrl-q': function('s:build_quickfix_list'), 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }

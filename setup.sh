@@ -7,7 +7,7 @@ wrapper() {
   NORMAL="\033[0m"
 
   REPO_HTTPS="https://github.com/Alviner/python-vimrc.git"
-  VUNDLE_HTTPS="https://github.com/VundleVim/Vundle.vim.git"
+  PLUG_HTTPS="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
 echo "${BLUE}"
 cat << "HELLO_TEXT"
@@ -69,17 +69,11 @@ echo "${NORMAL}"
   printf "${BLUE}%s${NORMAL}\n" "Symlinking $VIM/vimrc with ~/.vimrc..."
   ln -fs $VIM/vimrc ~/.vimrc
 
-  if [ ! -d "$VIM/bundle/Vundle.vim" ]; then
-      printf "${BLUE}%s${NORMAL}\n" "Installing Vundle..."
-      env git clone --depth=1 $VUNDLE_HTTPS "$VIM/bundle/Vundle.vim"
+  if [ ! -d "$VIM/autoload/plug.vim" ]; then
+      printf "${BLUE}%s${NORMAL}\n" "Installing Plug..."
+      curl -fLo $VIM/autoload/plug.vim --create-dirs PLUG_HTTPS
   fi
 
-  if [ ! -f $VIM/colors/wombat256mod.vim ]; then
-      if [ ! -d $VIM/colors/ ]; then
-          mkdir -p $VIM/colors
-      fi
-      wget 'http://www.vim.org/scripts/download_script.php?src_id=13400' -O $VIM/colors/wombat256mod.vim
-  fi
 
   printf "${GREEN}%s${NORMAL}\n" "Vimrc has been configured ;)"
   printf "${YELLOW}%s${NORMAL}\n" "Do not worry about error messages. When it occurs just press enter and wait till all plugins are installed."
@@ -87,4 +81,4 @@ echo "${NORMAL}"
 }
 
 wrapper
-vim +PluginInstall
+vim +PlugInstall
