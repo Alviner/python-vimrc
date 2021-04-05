@@ -7,7 +7,6 @@ wrapper() {
   NORMAL="\033[0m"
 
   REPO_HTTPS="https://github.com/Alviner/python-vimrc.git"
-  PLUG_HTTPS="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
 echo "${BLUE}"
 cat << "HELLO_TEXT"
@@ -71,7 +70,7 @@ echo "${NORMAL}"
 
   if [ ! -d "$VIM/autoload/plug.vim" ]; then
       printf "${BLUE}%s${NORMAL}\n" "Installing Plug..."
-      curl -fLo $VIM/autoload/plug.vim --create-dirs "$(PLUG_HTTPS)"
+      curl -fLo $VIM/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
 
 
