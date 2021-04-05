@@ -69,10 +69,9 @@ echo "${NORMAL}"
   printf "${BLUE}%s${NORMAL}\n" "Symlinking $VIM/vimrc with ~/.vimrc..."
   ln -fs $VIM/vimrc ~/.vimrc
 
-  if [ ! -d "$VIM/autoload/plug.vim" ]; then
-      printf "${BLUE}%s${NORMAL}\n" "Installing Plug..."
-      curl -fLo $VIM/autoload/plug.vim --create-dirs PLUG_HTTPS
-  fi
+
+  printf "${BLUE}%s${NORMAL}\n" "Installing Plug..."
+  curl -fLo $VIM/autoload/plug.vim --create-dirs PLUG_HTTPS
 
 
   printf "${GREEN}%s${NORMAL}\n" "Vimrc has been configured ;)"
