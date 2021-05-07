@@ -30,7 +30,7 @@ HELLO_TEXT
 echo "${NORMAL}"
 
   if [ ! -n "$VIM" ]; then
-    VIM=~/.vim
+    VIM=$HOME/.vim
   fi
 
   if [ -d "$VIM" ]; then
@@ -59,14 +59,15 @@ echo "${NORMAL}"
   }
 
   printf "${BLUE}%s${NORMAL}\n" "Looking for an existing vim config..."
-  if [ -f ~/.vimrc ] || [ -h ~/.vimrc ]; then
-    printf "${YELLOW}%s${NORMAL}\n" "Found ~/.vimrc."
-    printf "${BLUE}%s${NORMAL}\n" "You will see your old ~/.vimrc as $VIM/vimrc.bak"
-    mv ~/.vimrc $VIM/vimrc.bak
+  if [ -f $HOME/.vimrc ] || [ -h $HOME/.vimrc ]; then
+    printf "${YELLOW}%s${NORMAL}\n" "Found $HOME/.vimrc."
+    printf "${BLUE}%s${NORMAL}\n" "You will see your old $HOME/.vimrc as $VIM/vimrc.bak"
+    mv $HOME/.vimrc $VIM/vimrc.bak
   fi
 
-  printf "${BLUE}%s${NORMAL}\n" "Symlinking $VIM/vimrc with ~/.vimrc..."
-  ln -fs $VIM/vimrc ~/.vimrc
+  printf "${BLUE}%s${NORMAL}\n" "Symlinking $VIM/vimrc with $HOME/.vimrc..."
+  ln -fs $VIM/vimrc $HOME/.vimrc
+  ln -fs $VIM/vimrc $HOME/.config/nvim/init.vim
 
   if [ ! -d "$VIM/autoload/plug.vim" ]; then
       printf "${BLUE}%s${NORMAL}\n" "Installing Plug..."
