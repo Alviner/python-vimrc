@@ -18,7 +18,9 @@ if (has("termguicolors"))
     set termguicolors
 endif
 colorscheme onedark
-highlight Normal guibg=none
+if (has("nvim"))
+    highlight Normal guibg=none
+endif
 let g:onedark_termcolors=256
 let g:onedark_terminal_italics=1
 let g:onedark_hide_endofbuffer=1

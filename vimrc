@@ -1,5 +1,7 @@
 set nocompatible
 filetype off
+filetype plugin on
+filetype plugin indent on
 
 call plug#begin('$HOME/.vim/plugged')
     "-----------------------=== Core ===--------------------------
@@ -9,6 +11,8 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'bling/vim-airline'                            " lean & mean status/tabline for vim
     Plug 'scrooloose/nerdtree'                          " navigation
     Plug 'yuttie/comfortable-motion.vim'                " smooth scrolling
+    Plug 'vim-syntastic/syntastic'                      " syntax checking
+    Plug 'Valloric/YouCompleteMe'                       " autocomplete plugin
 
     "-------------------=== Visualization ===---------------------
     Plug 'joshdick/onedark.vim'                         " colorscheme
@@ -19,8 +23,6 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'tpope/vim-commentary'                         " comment stuff out
 
     "----------------=== Code speed increase ===------------------
-    Plug 'Valloric/YouCompleteMe'                       " autocomplete plugin
-    Plug 'scrooloose/syntastic'                         " syntax checking plugin for Vim
     Plug 'tpope/vim-surround'                           " parentheses, brackets, quotes, XML tags, and more
     Plug 'majutsushi/tagbar'                            " class/module browser
     Plug 'tpope/vim-obsession'                          " session manager
