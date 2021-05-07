@@ -28,6 +28,7 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'majutsushi/tagbar'                            " class/module browser
     Plug 'tpope/vim-obsession'                          " session manager
     Plug 'Raimondi/delimitMate'                         " automatic closing of quotes, parenthesis, brackets and more
+    Plug 'easymotion/vim-easymotion'                    " fast navigation
 
 call plug#end()
 

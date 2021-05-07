@@ -9,7 +9,7 @@ Keep calm and use VIM!
 Requirements
 ------------
 
-- VIM 7.4
+- NeoVIM 0.5+
 - git
 - bash 3.2+
 
@@ -41,8 +41,7 @@ instructions could be found on plugin page:
 `Valloric/YouCompleteMe <https://github.com/Valloric/YouCompleteMe#installation>`_.
 
 
-**Note:** Installation for Mac OS with support of clang compiler looks like
-this:
+**Note:** Need post install YCM:
 
 .. code-block:: bash
 
