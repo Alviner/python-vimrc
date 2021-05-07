@@ -13,6 +13,7 @@ call plug#begin('$HOME/.vim/plugged')
     Plug 'yuttie/comfortable-motion.vim'                " smooth scrolling
     Plug 'vim-syntastic/syntastic'                      " syntax checking
     Plug 'Valloric/YouCompleteMe'                       " autocomplete plugin
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
     "-------------------=== Visualization ===---------------------
     Plug 'joshdick/onedark.vim'                         " colorscheme
